@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+    server:
+        image: 'bankbuddy.azurecr.io/httpd:latest'
+        container_name: "httpd_server"
+        command: bash -c "chown -R buddy:buddy /var/cache/modsecurity && ./docker-compose_entrypoint.sh"
+        ports:
+        - "80:80"
+        - "443:443"
+        - "7001:7001"
+        volumes:
+        - /etc/letsencrypt:/etc/letsencrypt
+        - ../logs/httpd:/usr/local/apache2/logs
+        - ./amigo_client/static:/usr/local/apache2/htdocs/static
+        - ./userconfiguration:/usr/local/apache2/userconfiguration

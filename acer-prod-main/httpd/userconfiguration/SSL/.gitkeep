@@ -1,0 +1,5 @@
+
+Work around for commiting empty folders. Store the SSL conf files here. Name goes as follows
+- private key : privkey.pem
+- certificate : cert.pem
+- chain	      : chain.pem
